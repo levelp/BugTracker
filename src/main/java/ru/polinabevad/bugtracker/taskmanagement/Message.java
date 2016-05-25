@@ -7,4 +7,5 @@ class Message {
     private java.util.Date messageDate;
     private ru.polinabevad.bugtracker.profile.User messageAuthor;
     private Status messageStatus;
+    private ru.polinabevad.bugtracker.profile.User messageAppointer;
 }
