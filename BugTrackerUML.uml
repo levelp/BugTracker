@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="516.8359649122807" y="0.0">ru.polinabevad.bugtracker.profile.User</node>
+    <node x="183.74999999999997" y="66.0">ru.polinabevad.bugtracker.taskmanagement.Status</node>
+    <node x="0.0" y="312.0">ru.polinabevad.bugtracker.taskmanagement.StatusController</node>
+    <node x="620.859649122807" y="334.5">ru.polinabevad.bugtracker.profile.UserType</node>
+    <node x="411.10964912280696" y="1028.0">ru.polinabevad.bugtracker.taskboard.Filter</node>
+    <node x="347.85964912280696" y="279.0">ru.polinabevad.bugtracker.taskmanagement.Message</node>
+    <node x="506.0" y="881.0">ru.polinabevad.bugtracker.taskboard.TaskList</node>
+    <node x="277.25" y="481.0">ru.polinabevad.bugtracker.taskmanagement.Task</node>
+    <node x="235.99999999999997" y="859.0">ru.polinabevad.bugtracker.taskboard.UserBoard</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="ru.polinabevad.bugtracker.taskmanagement.Task" target="ru.polinabevad.bugtracker.taskmanagement.Message">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="ru.polinabevad.bugtracker.taskboard.UserBoard" target="ru.polinabevad.bugtracker.taskmanagement.Status">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="ru.polinabevad.bugtracker.taskboard.Filter" target="ru.polinabevad.bugtracker.profile.User">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="ru.polinabevad.bugtracker.taskmanagement.Message" target="ru.polinabevad.bugtracker.profile.User">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="ru.polinabevad.bugtracker.taskboard.UserBoard" target="ru.polinabevad.bugtracker.taskmanagement.Task">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="ru.polinabevad.bugtracker.taskboard.Filter" target="ru.polinabevad.bugtracker.taskboard.TaskList">
+      <point x="0.0" y="-92.5" />
+      <point x="568.109649122807" y="1003.0" />
+      <point x="570.0" y="1003.0" />
+      <point x="0.0" y="37.5" />
+    </edge>
+    <edge source="ru.polinabevad.bugtracker.taskboard.Filter" target="ru.polinabevad.bugtracker.taskmanagement.Status">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="ru.polinabevad.bugtracker.taskmanagement.Message" target="ru.polinabevad.bugtracker.taskmanagement.Status">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="ru.polinabevad.bugtracker.taskboard.TaskList" target="ru.polinabevad.bugtracker.taskmanagement.Task">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="ru.polinabevad.bugtracker.taskmanagement.Task" target="ru.polinabevad.bugtracker.taskmanagement.Status">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="ru.polinabevad.bugtracker.taskmanagement.Task" target="ru.polinabevad.bugtracker.profile.User">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="ru.polinabevad.bugtracker.profile.UserType" target="ru.polinabevad.bugtracker.profile.User">
+      <point x="0.0" y="-26.0" />
+      <point x="693.359649122807" y="254.0" />
+      <point x="689.3359649122807" y="254.0" />
+      <point x="34.5" y="114.5" />
+    </edge>
+    <edge source="ru.polinabevad.bugtracker.taskmanagement.StatusController" target="ru.polinabevad.bugtracker.taskmanagement.Status">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.8566098945660989" x="507.87237265669387" y="200.13065707252414" />
+  <SelectedNodes>
+    <node>ru.polinabevad.bugtracker.profile.UserType</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
