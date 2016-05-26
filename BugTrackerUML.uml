@@ -10,7 +10,7 @@
     <node x="411.10964912280696" y="1028.0">ru.polinabevad.bugtracker.taskboard.Filter</node>
     <node x="347.85964912280696" y="279.0">ru.polinabevad.bugtracker.taskmanagement.Message</node>
     <node x="506.0" y="881.0">ru.polinabevad.bugtracker.taskboard.TaskList</node>
-    <node x="287.25" y="492.0">ru.polinabevad.bugtracker.taskmanagement.Task</node>
+    <node x="277.25" y="481.0">ru.polinabevad.bugtracker.taskmanagement.Task</node>
     <node x="235.99999999999997" y="859.0">ru.polinabevad.bugtracker.taskboard.UserBoard</node>
   </nodes>
   <notes />
@@ -72,8 +72,10 @@
       <point x="0.0" y="0.0" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="0.8566098945660989" x="507.87237265669387" y="318.62099981064193" />
-  <SelectedNodes />
+  <settings layout="Hierarchic Group" zoom="0.8566098945660989" x="507.87237265669387" y="200.13065707252414" />
+  <SelectedNodes>
+    <node>ru.polinabevad.bugtracker.profile.UserType</node>
+  </SelectedNodes>
   <Categories>
     <Category>Fields</Category>
     <Category>Methods</Category>
