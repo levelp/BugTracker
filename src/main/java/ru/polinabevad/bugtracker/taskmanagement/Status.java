@@ -1,8 +1,14 @@
 package ru.polinabevad.bugtracker.taskmanagement;
 
 /**
- * Created by p.bevad.spb on 25.05.2016.
+ * Статус задачи, может использоваться сообщением для изменения
  */
 public class Status {
     private String statusType;
+
+    public void getStatus() {
+    }
+
+    public void setStatus() {
+    }
 }

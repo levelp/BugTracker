@@ -1,7 +1,7 @@
 package ru.polinabevad.bugtracker.taskmanagement;
 
 /**
- * Created by p.bevad.spb on 25.05.2016.
+ * Управляет статусом, будет таблица, какие переходы статусов разрешены: создан - в работе - проверяется - закрыт
  */
 public class StatusController {
     private Status statusTypeFrom;

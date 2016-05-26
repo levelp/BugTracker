@@ -1,11 +1,13 @@
 package ru.polinabevad.bugtracker.taskmanagement;
 
 /**
- * Created by p.bevad.spb on 25.05.2016.
+ * Задача. В ней могут содержаться сообщения, есть статус, даты создания, обновления и закрытия. Обновление - любое изменение
+ * с помощью сообщений. Прямое редактирование запрещено.
  */
 public class Task {
     private int taskNumber;
     private String taskName;
+    private String taskDescription;
     private Status taskStatus;
     private Message taskMessages;
     private ru.polinabevad.bugtracker.profile.User taskAuthor;

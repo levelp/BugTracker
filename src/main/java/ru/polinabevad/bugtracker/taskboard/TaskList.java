@@ -1,13 +1,13 @@
 package ru.polinabevad.bugtracker.taskboard;
 
 /**
- * Created by p.bevad.spb on 25.05.2016.
+ * Список задач
  */
 class TaskList {
     private ru.polinabevad.bugtracker.taskmanagement.Task tasks;
 
-    public TaskList getTasksList() {
-        return taskslist;
+    public void getTasksList() {
+
     }
 
 

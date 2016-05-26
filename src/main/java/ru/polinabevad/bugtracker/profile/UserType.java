@@ -1,7 +1,7 @@
 package ru.polinabevad.bugtracker.profile;
 
 /**
- * Created by p.bevad.spb on 25.05.2016.
+ * Тип пользователя: админский или нет, у админского будут права на удаление задач\сообщений
  */
 public class UserType extends User {
     private boolean isAdmin;

@@ -1,7 +1,7 @@
 package ru.polinabevad.bugtracker.profile;
 
 /**
- * Created by p.bevad.spb on 25.05.2016.
+ * Пользователь системы
  */
 public class User {
     private String login;

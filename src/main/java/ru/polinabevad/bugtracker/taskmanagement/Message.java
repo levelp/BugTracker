@@ -1,7 +1,7 @@
 package ru.polinabevad.bugtracker.taskmanagement;
 
 /**
- * Created by p.bevad.spb on 25.05.2016.
+ * Сообщение к задаче. Может поменять статус системы, поставить нового\изменить Автора\Исполнителя
  */
 class Message {
     private java.util.Date messageDate;
