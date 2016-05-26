@@ -6,4 +6,7 @@ package ru.polinabevad.bugtracker.taskmanagement;
 public class StatusController {
     private Status statusTypeFrom;
     private Status statusTypeTo;
+
+    public void changeStatus() {
+    }
 }

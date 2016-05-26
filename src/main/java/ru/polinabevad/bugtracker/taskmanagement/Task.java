@@ -14,4 +14,13 @@ public class Task {
     private java.util.Date taskUpdateDate;
     private java.util.Date taskCloseDate;
     private boolean isDeleted;
+
+    public void createTask() {
+    }
+
+    public void viewTask() {
+    }
+
+    public void deleteTask() {
+    }
 }

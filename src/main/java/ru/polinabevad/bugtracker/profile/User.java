@@ -9,4 +9,14 @@ public class User {
     private String password;
     private String email;
     private int userId;
+    private boolean isActive;
+
+    public void createUser() {
+    }
+
+    public void changeUserType() {
+    }
+
+    public void changeUserActivity() {
+    }
 }

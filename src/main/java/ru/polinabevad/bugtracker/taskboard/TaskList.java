@@ -5,7 +5,10 @@ package ru.polinabevad.bugtracker.taskboard;
  */
 class TaskList {
     private ru.polinabevad.bugtracker.taskmanagement.Task tasks;
-    private Filter tasksFilter;
+
+    public TaskList getTasksList() {
+        return taskslist;
+    }
 
 
 }

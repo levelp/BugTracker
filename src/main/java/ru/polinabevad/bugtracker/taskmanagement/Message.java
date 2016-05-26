@@ -8,4 +8,10 @@ class Message {
     private ru.polinabevad.bugtracker.profile.User messageAuthor;
     private Status messageStatus;
     private ru.polinabevad.bugtracker.profile.User messageAppointer;
+
+    public void createMessage() {
+    }
+
+    public void deleteMessage() {
+    }
 }
