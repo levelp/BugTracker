@@ -1,13 +1,18 @@
 package ru.polinabevad.bugtracker.taskmanagement;
 
+import ru.polinabevad.bugtracker.profile.*;
+import ru.polinabevad.bugtracker.taskboard.*;
+
+
 /**
  * Сообщение к задаче. Может поменять статус системы, поставить нового\изменить Автора\Исполнителя
+ * TODO: предусмотреть запрос подтверждения удаления сообщения, ограничение - роль админа
  */
 class Message {
     private java.util.Date messageDate;
-    private ru.polinabevad.bugtracker.profile.User messageAuthor;
+    private User messageAuthor;
     private Status messageStatus;
-    private ru.polinabevad.bugtracker.profile.User messageAppointer;
+    private User messageAppointer;
 
     public void createMessage() {
     }

@@ -1,8 +1,12 @@
 package ru.polinabevad.bugtracker.taskmanagement;
 
+import ru.polinabevad.bugtracker.profile.*;
+import ru.polinabevad.bugtracker.taskboard.*;
+import java.util.Date;
 /**
  * Задача. В ней могут содержаться сообщения, есть статус, даты создания, обновления и закрытия. Обновление - любое изменение
  * с помощью сообщений. Прямое редактирование запрещено.
+ * TODO: предусмотреть запрос подтверждения удаления задачи, ограничение - роль админа
  */
 public class Task {
     private int taskNumber;
@@ -10,11 +14,11 @@ public class Task {
     private String taskDescription;
     private Status taskStatus;
     private Message taskMessages;
-    private ru.polinabevad.bugtracker.profile.User taskAuthor;
-    private ru.polinabevad.bugtracker.profile.User taskAppointer;
-    private java.util.Date taskCreateDate;
-    private java.util.Date taskUpdateDate;
-    private java.util.Date taskCloseDate;
+    private User taskAuthor;
+    private User taskAppointer;
+    private Date taskCreateDate;
+    private Date taskUpdateDate;
+    private Date taskCloseDate;
     private boolean isDeleted;
 
     public void createTask() {

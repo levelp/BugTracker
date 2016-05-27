@@ -1,12 +1,15 @@
 package ru.polinabevad.bugtracker.taskboard;
 
+import ru.polinabevad.bugtracker.profile.*;
+import ru.polinabevad.bugtracker.taskmanagement.*;
+
 /**
  * Список незакрытых задач пользователя, аля рабочая доска
  */
 class UserBoard {
-    private ru.polinabevad.bugtracker.taskmanagement.Task task;
+    private Task task;
     private boolean isAuthor;
-    private ru.polinabevad.bugtracker.taskmanagement.Status isNotClose;
+    private Status isNotClose;
 
     public UserBoard getUserBoard() {
         return null;

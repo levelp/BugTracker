@@ -1,16 +1,19 @@
 package ru.polinabevad.bugtracker.taskboard;
 
+import ru.polinabevad.bugtracker.profile.*;
+import ru.polinabevad.bugtracker.taskmanagement.*;
+import java.util.Date;
 /**
- * Фильтр списка задач
+ * Фильтр списка задач. Может быть нужно будет убрать и заменить представлением.
  */
 public class Filter extends TaskList {
 
-    private java.util.Date tasksCreateDateFrom;
-    private java.util.Date tasksCloseDateFrom;
-    private java.util.Date tasksUpdateDateFrom;
-    private ru.polinabevad.bugtracker.taskmanagement.Status taskStatus;
-    private ru.polinabevad.bugtracker.profile.User userAuthor;
-    private ru.polinabevad.bugtracker.profile.User userAppointer;
+    private Date tasksCreateDateFrom;
+    private Date tasksCloseDateFrom;
+    private Date tasksUpdateDateFrom;
+    private Status taskStatus;
+    private User userAuthor;
+    private User userAppointer;
 
     public void filterTasks() {
     }
