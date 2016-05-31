@@ -1,8 +1,11 @@
 package ru.polinabevad.bugtracker.taskmanagement;
 
+
 import ru.polinabevad.bugtracker.profile.*;
-import ru.polinabevad.bugtracker.taskboard.*;
+import ru.polinabevad.bugtracker.taskmanagement.Status.*;
+
 import java.util.Date;
+
 /**
  * Задача. В ней могут содержаться сообщения, есть статус, даты создания, обновления и закрытия. Обновление - любое изменение
  * с помощью сообщений. Прямое редактирование запрещено.
@@ -12,7 +15,7 @@ public class Task {
     private int taskNumber;
     private String taskName;
     private String taskDescription;
-    private Status taskStatus;
+    private StatusType taskStatus;
     private Message taskMessages;
     private User taskAuthor;
     private User taskAppointer;
@@ -24,9 +27,15 @@ public class Task {
     public void createTask() {
     }
 
-    public void viewTask() {
-    }
-
     public void deleteTask() {
     }
+
+    public StatusType getTaskStatus() {
+        return taskStatus;
+    }
+
+    public void setTaskStatus(StatusType statusType) {
+        this.taskStatus = statusType;
+    }
+
 }
