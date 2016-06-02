@@ -54,10 +54,19 @@ public class Task {
 
     public void deleteTask() {
     }
+
     public MessageList getTaskMessages() {
         return taskMessages;
     }
 
+    public void createMessage(String messageText){
+         if (taskMessages == null) {
+             taskMessages = new MessageList(this);
+         }
+        Message message = new Message(this);
+        message.createMessage(messageText);
+        taskMessages.add(message);
+    }
     public StatusType getTaskStatus() {
         return taskStatus;
     }

@@ -17,33 +17,28 @@ public class MessageListTest extends Assert{
         task1.createTask("Первая задача",1);
         Task task2 = new Task();
         task2.createTask("Вторая задача",2);
-        MessageList list1 = new MessageList(task1);
-        MessageList list2 = new MessageList(task2);
 
-        list1.createMessage("Тест1");
-        System.out.println(task1.getTaskUpdateDate());
-
-        list1.createMessage("Тест2");
+        task1.createMessage("Тест1");
+        task1.createMessage("Тест2");
+        //вывести дату апдейта 1-ой задачи после добавления первых сообщений
         System.out.println(task1.getTaskUpdateDate());
 
         //задержка для проверки update date
-        sleep(5000);
-        list1.createMessage("Тест3");
+        sleep(2000);
+        task1.createMessage("Тест1");
+        //задержка для проверки update date
+        sleep(2000);
+        task2.createMessage("Тест3");
 
-        list2.createMessage("Тест1");
+        // В первую задачу должно добавиться 3 сообщения
+        assertEquals("[Текст: Тест1, Текст: Тест2, Текст: Тест3]", task1.getTaskMessages().toString());
+
+        // Во вторую одно сообщение
+        assertEquals("[Текст: Тест1]", task2.getTaskMessages().toString());
+        //вывести дату апдейта 1-ой задачи после добавления последнего сообщения
+        System.out.println(task1.getTaskUpdateDate());
+        //вывести дату апдейта 2-ой задачи после добавления сообщений
         System.out.println(task2.getTaskUpdateDate());
-
-        System.out.println(task1.getTaskUpdateDate());
-
-        for (Object somemessage : list1) {
-            System.out.println(somemessage.toString());
-        }
-
-        for (Object somemessage : list2) {
-            System.out.println(somemessage.toString());
-        }
-        //вывести дату апдейта задачи после добавления сообщений
-        System.out.println(task1.getTaskUpdateDate());
 
     }
 

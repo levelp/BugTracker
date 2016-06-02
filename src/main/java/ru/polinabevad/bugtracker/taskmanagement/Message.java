@@ -21,6 +21,10 @@ public class Message {
     private Object messageAttach;
     private Task task;
 
+    public Message() {
+
+    }
+
     public Message(Task task) {
         this.task = task;
     }
