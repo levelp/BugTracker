@@ -1,21 +1,21 @@
 package ru.polinabevad.bugtracker.taskmanagement;
 
+import com.sun.xml.internal.ws.api.message.MessageWritable;
+
 import java.util.ArrayList;
 
 /**
- * список сообщений задачи
+ * список сообщений задачи   , не доделан, не работает!!
  */
 public class MessageList extends ArrayList{
-    public static Task task;
-
+    Task task;
     public MessageList(Task task) {
-        this.task = task;
+
     }
-    public static MessageList messages = new MessageList(task);
 
     public void createMessage(String messageText) {
         Message message = new Message(task);
         message.createMessage(messageText);
-        messages.add(message);
+        add(message);
     }
 }

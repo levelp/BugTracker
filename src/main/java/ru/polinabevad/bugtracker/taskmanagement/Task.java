@@ -17,7 +17,7 @@ public class Task {
     private int taskId;
     private String taskDescription;
     private StatusType taskStatus;
-    private Message taskMessages;
+    private MessageList taskMessages;
     private User taskAuthor;
     private User taskAppointer;
     private Date taskCreateDate;
@@ -53,6 +53,9 @@ public class Task {
     }
 
     public void deleteTask() {
+    }
+    public MessageList getTaskMessages() {
+        return taskMessages;
     }
 
     public StatusType getTaskStatus() {
