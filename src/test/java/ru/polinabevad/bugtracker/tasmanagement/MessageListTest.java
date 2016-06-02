@@ -25,10 +25,10 @@ public class MessageListTest extends Assert{
 
         //задержка для проверки update date
         sleep(2000);
-        task1.createMessage("Тест1");
+        task1.createMessage("Тест3");
         //задержка для проверки update date
         sleep(2000);
-        task2.createMessage("Тест3");
+        task2.createMessage("Тест1");
 
         // В первую задачу должно добавиться 3 сообщения
         assertEquals("[Текст: Тест1, Текст: Тест2, Текст: Тест3]", task1.getTaskMessages().toString());

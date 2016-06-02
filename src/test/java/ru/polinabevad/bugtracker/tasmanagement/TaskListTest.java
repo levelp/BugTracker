@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import ru.polinabevad.bugtracker.taskmanagement.Task;
-import ru.polinabevad.bugtracker.taskmanagement.TaskList;
+import ru.polinabevad.bugtracker.taskboard.TaskList;
 
 /**
  *

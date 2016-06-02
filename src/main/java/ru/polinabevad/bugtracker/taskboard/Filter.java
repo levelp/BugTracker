@@ -1,7 +1,9 @@
 package ru.polinabevad.bugtracker.taskboard;
 
+
 import ru.polinabevad.bugtracker.profile.*;
 import ru.polinabevad.bugtracker.taskmanagement.*;
+
 import java.util.Date;
 /**
  * Фильтр списка задач. Может быть нужно будет убрать и заменить представлением.

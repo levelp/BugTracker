@@ -2,6 +2,7 @@ package ru.polinabevad.bugtracker.taskmanagement;
 
 
 import ru.polinabevad.bugtracker.profile.*;
+import ru.polinabevad.bugtracker.services.DateService;
 import ru.polinabevad.bugtracker.taskmanagement.Status.*;
 
 import java.util.Date;
@@ -20,9 +21,9 @@ public class Task {
     private MessageList taskMessages;
     private User taskAuthor;
     private User taskAppointer;
-    private Date taskCreateDate;
-    private Date taskUpdateDate;
-    private Date taskCloseDate;
+    private DateService taskCreateDate;
+    private DateService taskUpdateDate;
+    private DateService taskCloseDate;
     private boolean isDeleted;
 
     public Task() {
@@ -30,17 +31,17 @@ public class Task {
     }
 
     public void createTask(String taskName, Integer taskNumber) {
-        taskCreateDate = new Date();
+        taskCreateDate = new DateService();
         taskUpdateDate = taskCreateDate;
         this.taskName = taskName;
         this.taskNumber = taskNumber;
     }
 
-    public void changeUpdateDate(Date date) {
+    public void changeUpdateDate(DateService date) {
         taskUpdateDate = date;
     }
 
-    public void changeCloseDate(Date date) {
+    public void changeCloseDate(DateService date) {
         taskCloseDate = date;
     }
 

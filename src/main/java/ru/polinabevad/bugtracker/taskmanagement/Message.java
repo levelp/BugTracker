@@ -1,9 +1,11 @@
 package ru.polinabevad.bugtracker.taskmanagement;
 
 import ru.polinabevad.bugtracker.profile.*;
+import ru.polinabevad.bugtracker.services.DateService;
 import ru.polinabevad.bugtracker.taskboard.*;
 import ru.polinabevad.bugtracker.taskmanagement.Status.*;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
@@ -12,7 +14,7 @@ import java.util.Date;
  * TODO: предусмотреть запрос подтверждения удаления сообщения, ограничение - роль админа
  */
 public class Message {
-    private Date messageDate;
+    private DateService messageDate;
     private User messageAuthor;
     private int messageId;
     private Status messageStatus;
@@ -21,16 +23,17 @@ public class Message {
     private Object messageAttach;
     private Task task;
 
-    public Message() {
-
-    }
 
     public Message(Task task) {
         this.task = task;
     }
     public void createMessage(String messageText) {
-        messageDate = new Date();
+        //считываем текущую дату
+        messageDate = new DateService();
+
+        //устанавливаем дату апдейта задачи датой сообщения
         task.changeUpdateDate(messageDate);
+        //добавляем текст сообщения
         this.messageText = messageText;
     }
 
@@ -67,4 +70,5 @@ public class Message {
         return task.getTaskStatus();
 
     }
+
 }
