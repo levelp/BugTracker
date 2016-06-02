@@ -12,15 +12,25 @@ import ru.polinabevad.bugtracker.taskmanagement.Status.*;
 public class Message {
     private java.util.Date messageDate;
     private User messageAuthor;
+    private int messageId;
     private Status messageStatus;
     private User messageAppointer;
+    private String messageText;
+    private Object messageAttach;
     private Task task;
 
     public Message(Task task) {
         this.task = task;
     }
-    public void createMessage() {
+    public void createMessage(String messageText) {
+        task.changeUpdateDate(messageDate);
+        this.messageText = messageText;
 
+
+    }
+
+    public String toString() {
+        return "Текст: " + messageText;
     }
     public void deleteMessage() {
     }
@@ -42,9 +52,10 @@ public class Message {
             task.setTaskStatus(statusTypeTo);
             return task.getTaskStatus();
         }
-        //разрешаем перевод из проверки в закрыт
+        //разрешаем перевод из проверки в закрыт и обновляем дату закрытия задачи
         if ((statusTypeFrom == StatusType.CHECK) && (statusTypeTo == StatusType.CLOSE)) {
             task.setTaskStatus(statusTypeTo);
+            task.changeCloseDate(messageDate);
             return task.getTaskStatus();
         }
         task.setTaskStatus(statusTypeFrom);

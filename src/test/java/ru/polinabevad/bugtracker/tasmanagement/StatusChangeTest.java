@@ -1,4 +1,4 @@
-package ru.polinabevad.bugtracker;
+package ru.polinabevad.bugtracker.tasmanagement;
 
 import org.junit.Assert;
 import org.junit.Test;

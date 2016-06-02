@@ -14,6 +14,7 @@ import java.util.Date;
 public class Task {
     private int taskNumber;
     private String taskName;
+    private int taskId;
     private String taskDescription;
     private StatusType taskStatus;
     private Message taskMessages;
@@ -24,7 +25,27 @@ public class Task {
     private Date taskCloseDate;
     private boolean isDeleted;
 
-    public void createTask() {
+    public Task() {
+
+    }
+
+    public void createTask(String taskName, Integer taskNumber) {
+        taskCreateDate = new Date();
+        taskUpdateDate = taskCreateDate;
+        this.taskName = taskName;
+        this.taskNumber = taskNumber;
+    }
+
+    public void changeUpdateDate(Date date) {
+        taskUpdateDate = date;
+    }
+
+    public void changeCloseDate(Date date) {
+        taskCloseDate = date;
+    }
+
+    public int getTaskNumber() {
+        return this.taskNumber;
     }
 
     public void deleteTask() {
@@ -38,4 +59,8 @@ public class Task {
         this.taskStatus = statusType;
     }
 
+    public String toString() {
+        return "Номер задачи: " + taskNumber + " Название задачи: " + taskName + " Дата создания задачи: "
+                + taskCreateDate + " Дата обновления задачи:" + taskUpdateDate;
+    }
 }
