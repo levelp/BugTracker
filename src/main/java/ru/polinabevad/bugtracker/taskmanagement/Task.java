@@ -48,6 +48,10 @@ public class Task {
         return this.taskNumber;
     }
 
+    public Date getTaskUpdateDate() {
+        return taskUpdateDate;
+    }
+
     public void deleteTask() {
     }
 

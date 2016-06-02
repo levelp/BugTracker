@@ -4,13 +4,15 @@ import ru.polinabevad.bugtracker.profile.*;
 import ru.polinabevad.bugtracker.taskboard.*;
 import ru.polinabevad.bugtracker.taskmanagement.Status.*;
 
+import java.util.Date;
+
 
 /**
  * Сообщение к задаче. Может поменять статус системы, поставить нового\изменить Автора\Исполнителя
  * TODO: предусмотреть запрос подтверждения удаления сообщения, ограничение - роль админа
  */
 public class Message {
-    private java.util.Date messageDate;
+    private Date messageDate;
     private User messageAuthor;
     private int messageId;
     private Status messageStatus;
@@ -23,10 +25,9 @@ public class Message {
         this.task = task;
     }
     public void createMessage(String messageText) {
+        messageDate = new Date();
         task.changeUpdateDate(messageDate);
         this.messageText = messageText;
-
-
     }
 
     public String toString() {
