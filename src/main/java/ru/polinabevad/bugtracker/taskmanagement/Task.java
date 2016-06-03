@@ -1,6 +1,7 @@
 package ru.polinabevad.bugtracker.taskmanagement;
 
 
+import ru.polinabevad.bugtracker.annotations.Required;
 import ru.polinabevad.bugtracker.profile.*;
 import ru.polinabevad.bugtracker.services.DateService;
 import ru.polinabevad.bugtracker.taskmanagement.Status.*;
@@ -13,14 +14,22 @@ import java.util.Date;
  * TODO: предусмотреть запрос подтверждения удаления задачи, ограничение - роль админа
  */
 public class Task {
+    @Required
     private int taskNumber;
+    @Required
     private String taskName;
+    @Required
     private int taskId;
-    private String taskDescription;
+    @Required
     private StatusType taskStatus;
-    private MessageList taskMessages;
+    @Required
     private User taskAuthor;
+    @Required
     private User taskAppointer;
+
+    private User currentUser;
+    private String taskDescription;
+    private MessageList taskMessages;
     private DateService taskCreateDate;
     private DateService taskUpdateDate;
     private DateService taskCloseDate;
@@ -53,8 +62,7 @@ public class Task {
         return taskUpdateDate;
     }
 
-    public void deleteTask() {
-    }
+
 
     public MessageList getTaskMessages() {
         return taskMessages;
@@ -80,4 +88,19 @@ public class Task {
         return "Номер задачи: " + taskNumber + " Название задачи: " + taskName + " Дата создания задачи: "
                 + taskCreateDate + " Дата обновления задачи:" + taskUpdateDate;
     }
+
+    //полной процедуры пока удаления не будет, просто помечаем как isDeleted
+    public void deleteTask() {
+        //проверяем, что пользователь админ
+        if (currentUser.checkUserisAdmin() == true) {
+            this.isDeleted = true;
+        }
+        //TODO: заменить на Exception
+        else System.out.println("У юзера нет прав на удаление");
+    }
+
+    public boolean getDeletedStatus() {
+        return isDeleted;
+    }
+
 }

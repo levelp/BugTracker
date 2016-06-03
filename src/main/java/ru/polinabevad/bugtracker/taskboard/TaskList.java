@@ -1,5 +1,7 @@
 package ru.polinabevad.bugtracker.taskboard;
 
+import ru.polinabevad.bugtracker.profile.User;
+import ru.polinabevad.bugtracker.profile.UserType;
 import ru.polinabevad.bugtracker.taskmanagement.Task;
 
 import java.util.ArrayList;
@@ -11,9 +13,10 @@ public class TaskList extends ArrayList {
 
     private static Integer lastTaskNumber = 0;
 
-    public TaskList(){
+    public TaskList() {
 
     }
+
     public TaskList(int leng) {
         this.ensureCapacity(leng);
     }
@@ -40,4 +43,25 @@ public class TaskList extends ArrayList {
         tasks.add(task);
 
     }
+     // без удаленных (помеченных на isDeleted)
+    public void getTasksList() {
+        if (tasks != null) {
+            for (int i=0; i<tasks.size(); i++) {
+                if (tasks.get(i).getClass() == Task.class) {
+                    Task task = (Task)tasks.get(i);
+                    if (task.getDeletedStatus()!=true) {
+                        System.out.println(task.toString());
+                    }
+                }
+            }
+        }
+
+    }
+   /*
+    public Task getTask(int taskNumber) {
+        tasks.
+        return task;
+    }
+    */
+
 }

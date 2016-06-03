@@ -5,7 +5,7 @@ import ru.polinabevad.bugtracker.annotations.Required;
 /**
  * Пользователь системы
  */
-public class User {
+public class User extends UserType{
     @Required
     private String login;
 
@@ -22,10 +22,8 @@ public class User {
         return user;
     }
 
-    public void changeUserType() {
-    }
-
-    public void changeUserActivity() {
+    public void disableUserActivity() {
+        this.isActive = false;
     }
 
     public String getLogin() {
