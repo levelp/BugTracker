@@ -1,11 +1,11 @@
-package ru.polinabevad.bugtracker.tasmanagement;
+package ru.polinabevad.bugtracker.taskmanagement;
 
 import org.junit.Assert;
 import org.junit.Test;
 import ru.polinabevad.bugtracker.taskmanagement.Status.*;
 
 /**
- * Created by p.bevad.spb on 30.05.2016.
+ *
  */
 public class StatusTypeTest extends Assert {
     @Test

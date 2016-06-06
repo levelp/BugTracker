@@ -1,15 +1,14 @@
-package ru.polinabevad.bugtracker.tasmanagement;
+package ru.polinabevad.bugtracker.taskmanagement;
 
 import org.junit.Assert;
 import org.junit.Test;
 import ru.polinabevad.bugtracker.services.*;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Created by p.bevad.spb on 02.06.2016.
+ *
  */
 public class DateTest extends Assert {
     @Test

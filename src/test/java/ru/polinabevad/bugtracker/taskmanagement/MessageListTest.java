@@ -1,9 +1,7 @@
-package ru.polinabevad.bugtracker.tasmanagement;
+package ru.polinabevad.bugtracker.taskmanagement;
 
 import org.junit.Assert;
 import org.junit.Test;
-import ru.polinabevad.bugtracker.taskmanagement.MessageList;
-import ru.polinabevad.bugtracker.taskmanagement.Task;
 
 import static java.lang.Thread.sleep;
 

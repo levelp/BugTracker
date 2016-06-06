@@ -1,7 +1,5 @@
 package ru.polinabevad.bugtracker.taskboard;
 
-import ru.polinabevad.bugtracker.profile.User;
-import ru.polinabevad.bugtracker.profile.UserType;
 import ru.polinabevad.bugtracker.taskmanagement.Task;
 
 import java.util.ArrayList;
@@ -11,24 +9,23 @@ import java.util.ArrayList;
  */
 public class TaskList extends ArrayList {
 
+    public static TaskList tasks = new TaskList(100);
     private static Integer lastTaskNumber = 0;
 
-    public TaskList() {
+    TaskList() {
 
     }
 
-    public TaskList(int leng) {
+    private TaskList(int leng) {
         this.ensureCapacity(leng);
     }
 
-    public static TaskList tasks = new TaskList(100);
-
-    public Integer increaseLastTaskNumber() {
-        lastTaskNumber = ++lastTaskNumber;
+    public static Integer getLastTaskNumber() {
         return lastTaskNumber;
     }
 
-    public static Integer getLastTaskNumber() {
+    private Integer increaseLastTaskNumber() {
+        lastTaskNumber = ++lastTaskNumber;
         return lastTaskNumber;
     }
 
@@ -46,10 +43,10 @@ public class TaskList extends ArrayList {
      // без удаленных (помеченных на isDeleted)
     public void getTasksList() {
         if (tasks != null) {
-            for (int i=0; i<tasks.size(); i++) {
-                if (tasks.get(i).getClass() == Task.class) {
-                    Task task = (Task)tasks.get(i);
-                    if (task.getDeletedStatus()!=true) {
+            for (Object task1 : tasks) {
+                if (task1.getClass() == Task.class) {
+                    Task task = (Task) task1;
+                    if (!task.getDeletedStatus()) {
                         System.out.println(task.toString());
                     }
                 }
