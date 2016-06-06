@@ -22,13 +22,11 @@ public class TaskListTest extends Assert{
         Task task4 = (Task)TaskList.tasks.get(3);
         assertEquals("Номер задачи должен быть четыре", 4, task4.getTaskNumber());
         TaskList.tasks.getTasksList();
-        /*for (Object sometask : TaskList.tasks) {
-            System.out.println(sometask.toString());
-        } */
 
         //TODO: проверка удаленных
-        TaskList.tasks.createTask("Еще задача");
-       /*TaskList.tasks.get*/
+        System.out.println("===============");
+        Task taskfindbyNumber = TaskList.tasks.getTaskByNumber(2);
+        System.out.println("Задача найдена по номеру:2 " + taskfindbyNumber);
 
     }
 

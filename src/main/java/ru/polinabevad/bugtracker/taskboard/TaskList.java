@@ -7,13 +7,12 @@ import java.util.ArrayList;
 /**
  * Список задач
  */
-public class TaskList extends ArrayList {
+public class TaskList<T> extends ArrayList<T> {
 
-    public static TaskList tasks = new TaskList(100);
+    public static TaskList<Task> tasks = new TaskList<Task>(100);
     private static Integer lastTaskNumber = 0;
 
-    TaskList() {
-
+    private TaskList() {
     }
 
     private TaskList(int leng) {
@@ -40,25 +39,26 @@ public class TaskList extends ArrayList {
         tasks.add(task);
 
     }
-     // без удаленных (помеченных на isDeleted)
+
+    // без удаленных (помеченных на isDeleted)
     public void getTasksList() {
         if (tasks != null) {
-            for (Object task1 : tasks) {
-                if (task1.getClass() == Task.class) {
-                    Task task = (Task) task1;
-                    if (!task.getDeletedStatus()) {
-                        System.out.println(task.toString());
-                    }
+            for (Task task : tasks) {
+                if (!task.getDeletedStatus()) {
+                    System.out.println(task.toString());
                 }
             }
         }
-
     }
-   /*
-    public Task getTask(int taskNumber) {
-        tasks.
-        return task;
-    }
-    */
 
+    public Task getTaskByNumber(int taskNumber) {
+        for (Task task : tasks) {
+            if (task.getTaskNumber() == taskNumber)
+                return task;
+        }
+        return null;
+    }
 }
+
+
+

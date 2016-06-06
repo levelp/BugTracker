@@ -29,7 +29,7 @@ public class Task {
 
     private User currentUser;
     private String taskDescription;
-    private MessageList taskMessages;
+    private MessageList<Message> taskMessages;
     private DateService taskCreateDate;
     private DateService taskUpdateDate;
     private DateService taskCloseDate;
@@ -59,29 +59,56 @@ public class Task {
     }
 
     public Date getTaskUpdateDate() {
-        return taskUpdateDate;
+        return this.taskUpdateDate;
     }
 
+    public Date getTaskCloseDate() {
+        return this.taskCloseDate;
+    }
 
+    public Date getTaskCreateDate() {
+        return this.taskCreateDate;
+    }
+
+    public String getTaskName() {
+        return this.taskName;
+    }
+
+    public String getTaskDescription() {
+        return this.taskDescription;
+    }
+
+    public User getTaskAuthor() {
+        return this.taskAuthor;
+    }
+
+    public User getTaskAppointer() {
+        return this.taskAppointer;
+    }
 
     public MessageList getTaskMessages() {
         return taskMessages;
     }
 
-    public void createMessage(String messageText){
-         if (taskMessages == null) {
-             taskMessages = new MessageList(this);
-         }
-        Message message = new Message(this);
-        message.createMessage(messageText);
-        taskMessages.add(message);
-    }
     public StatusType getTaskStatus() {
         return taskStatus;
     }
 
     public void setTaskStatus(StatusType statusType) {
         this.taskStatus = statusType;
+    }
+
+    public boolean getDeletedStatus() {
+        return isDeleted;
+    }
+
+    public void createMessage(String messageText) {
+        if (taskMessages == null) {
+            taskMessages = new MessageList(this);
+        }
+        Message message = new Message(this);
+        message.createMessage(messageText);
+        taskMessages.add(message);
     }
 
     public String toString() {
@@ -99,8 +126,5 @@ public class Task {
         else System.out.println("У юзера нет прав на удаление");
     }
 
-    public boolean getDeletedStatus() {
-        return isDeleted;
-    }
 
 }
