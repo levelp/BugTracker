@@ -46,9 +46,9 @@
                 for (int i = 0; i < TaskList.tasks.size(); i++) {
                     if (TaskList.tasks.get(i).getClass() == Task.class) {
                         Task task = (Task) TaskList.tasks.get(i);
-                        if (!task.getDeletedStatus()) {
+                        if (!task.getDeletedStatus()) { %>
             <%-- Ругается на print без этого комментария. Что за бред?--%>
-            out.print("Задача" + task.toString()); %> <br>
+            <% out.print("Задача" + task.toString()); %> <br>
             <%
                         }
                     }
