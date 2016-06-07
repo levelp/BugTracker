@@ -27,7 +27,7 @@ public class Task {
     @Required
     private User taskAppointer;
 
-    private User currentUser;
+
     private String taskDescription;
     private MessageList<Message> taskMessages;
     private DateService taskCreateDate;
@@ -117,13 +117,14 @@ public class Task {
     }
 
     //полной процедуры пока удаления не будет, просто помечаем как isDeleted
-    public void deleteTask() {
+    public String deleteTask(User currentUser) {
         //проверяем, что пользователь админ
-        if (currentUser.checkUserisAdmin() == true) {
+        if (currentUser.checkUserisAdmin()) {
             this.isDeleted = true;
+            return "Задача №" + this.getTaskNumber() + " удалена.";
         }
         //TODO: заменить на Exception
-        else System.out.println("У юзера нет прав на удаление");
+        return "У юзера нет прав на удаление";
     }
 
 

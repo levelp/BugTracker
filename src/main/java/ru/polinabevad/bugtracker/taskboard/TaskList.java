@@ -58,7 +58,22 @@ public class TaskList<T> extends ArrayList<T> {
         }
         return null;
     }
+
+    public Task getTaskByName(String taskName) {
+        for (Task task : tasks) {
+            if (task.getTaskName().contains(taskName))
+                return task;
+        }
+        return null;
+    }
+
+    public int getIndex(Task task) {
+        return tasks.indexOf(task);
+    }
+
 }
+
+
 
 
 

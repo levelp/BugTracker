@@ -3,6 +3,8 @@ package ru.polinabevad.bugtracker.taskmanagement;
 import org.junit.Assert;
 import org.junit.Test;
 
+import ru.polinabevad.bugtracker.profile.User;
+import ru.polinabevad.bugtracker.profile.UserType;
 import ru.polinabevad.bugtracker.taskboard.TaskList;
 
 /**
@@ -23,11 +25,27 @@ public class TaskListTest extends Assert{
         assertEquals("Номер задачи должен быть четыре", 4, task4.getTaskNumber());
         TaskList.tasks.getTasksList();
 
-        //TODO: проверка удаленных
+        //Проверка поиска по имени и номеру
         System.out.println("===============");
         Task taskfindbyNumber = TaskList.tasks.getTaskByNumber(2);
-        System.out.println("Задача найдена по номеру:2 " + taskfindbyNumber);
 
+        System.out.println("Задача найдена по номеру:2 " + taskfindbyNumber);
+        Task taskfindbyName = TaskList.tasks.getTaskByName("Третья");
+        System.out.println("Задача найдена по названию: Третья. " + taskfindbyName);
+        System.out.println("===============");
+
+        //Проверка удаленных В списке не должна выдаться задача под номером 2
+        User testAdmin = new User();
+        testAdmin.changeUserType("admin");
+        assertEquals("Задача №2 удалена.", TaskList.tasks.getTaskByNumber(2).deleteTask(testAdmin));
+
+        TaskList.tasks.getTasksList();
+        System.out.println("===============");
+        //Проверка удаления от неадмина
+        User testUser = new User();
+        assertEquals("У юзера нет прав на удаление", TaskList.tasks.getTaskByNumber(3).deleteTask(testUser));
+        //задача 3 должна остаться на месте.
+        TaskList.tasks.getTasksList();
     }
 
 }

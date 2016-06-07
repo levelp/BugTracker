@@ -5,10 +5,10 @@ package ru.polinabevad.bugtracker.profile;
  */
 public class UserType {
     //пользователь-админ (может все)
+
     private boolean isAdmin;
     //пользователь - поддержка (принимают задачи в работу)
     private boolean isSupport;
-
 
     //сделать пользователя админом
     public void makeUserAdmin() {
