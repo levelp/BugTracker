@@ -45,10 +45,10 @@
                 TaskList.tasks.createTask("Новая задача");
                 for (int i = 0; i < TaskList.tasks.size(); i++) {
                     if (TaskList.tasks.get(i).getClass() == Task.class) {
-                        Task task = (Task) TaskList.tasks.get(i);
+                        Task task = TaskList.tasks.get(i);
                         if (!task.getDeletedStatus()) { %>
-            <%-- Ругается на print без этого комментария. Что за бред?--%>
-            <% out.print("Задача" + task.toString()); %> <br>
+            <%-- Ругается на print. Что за бред?--%>
+            <% out.print("Задача " + task.toString()); %> <br>
             <%
                         }
                     }

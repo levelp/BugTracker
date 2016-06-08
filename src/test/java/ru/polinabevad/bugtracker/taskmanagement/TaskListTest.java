@@ -16,14 +16,14 @@ public class TaskListTest extends Assert{
         TaskList.tasks.createTask("Первая задача");
         TaskList.tasks.createTask("Вторая задача");
         TaskList.tasks.createTask("Третья задача");
-        Task task3 = (Task)TaskList.tasks.get(2);
+        Task task3 = TaskList.tasks.get(2);
         assertEquals("Номер задачи должен быть три", 3, task3.getTaskNumber());
 
         //проверяем что с таким же названием как предыдущая запишется с новым номером
         TaskList.tasks.createTask("Третья задача");
-        Task task4 = (Task)TaskList.tasks.get(3);
+        Task task4 = TaskList.tasks.get(3);
         assertEquals("Номер задачи должен быть четыре", 4, task4.getTaskNumber());
-        TaskList.tasks.getTasksList();
+        TaskList.tasks.printTasksList();
 
         //Проверка поиска по имени и номеру
         System.out.println("===============");
@@ -39,13 +39,14 @@ public class TaskListTest extends Assert{
         testAdmin.changeUserType("admin");
         assertEquals("Задача №2 удалена.", TaskList.tasks.getTaskByNumber(2).deleteTask(testAdmin));
 
-        TaskList.tasks.getTasksList();
+        TaskList.tasks.printTasksList();
         System.out.println("===============");
         //Проверка удаления от неадмина
         User testUser = new User();
         assertEquals("У юзера нет прав на удаление", TaskList.tasks.getTaskByNumber(3).deleteTask(testUser));
         //задача 3 должна остаться на месте.
-        TaskList.tasks.getTasksList();
+        TaskList.tasks.printTasksList();
+
     }
 
 }

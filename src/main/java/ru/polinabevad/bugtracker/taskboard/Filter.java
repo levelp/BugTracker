@@ -22,6 +22,6 @@ public class Filter {
 
     //TODO: реализовать фильтрацию по автору, исполнителю, датам, статусу
     public void filterTasks(Status taskStatus) {
-        TaskList.tasks.getTasksList();
+
     }
 }

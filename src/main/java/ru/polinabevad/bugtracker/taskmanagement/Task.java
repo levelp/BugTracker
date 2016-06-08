@@ -6,6 +6,7 @@ import ru.polinabevad.bugtracker.profile.*;
 import ru.polinabevad.bugtracker.services.DateService;
 import ru.polinabevad.bugtracker.taskmanagement.Status.*;
 
+
 import java.util.Date;
 
 /**
@@ -19,6 +20,7 @@ public class Task {
     @Required
     private String taskName;
     @Required
+
     private int taskId;
     @Required
     private StatusType taskStatus;
@@ -80,6 +82,10 @@ public class Task {
 
     public User getTaskAuthor() {
         return this.taskAuthor;
+    }
+
+    public void setTaskAuthor(User user) {
+        this.taskAuthor = user;
     }
 
     public User getTaskAppointer() {
