@@ -1,6 +1,6 @@
 package ru.polinabevad.bugtracker.core;
 
-import ru.polinabevad.bugtracker.profile.PeopleService;
+import ru.polinabevad.bugtracker.services.hibernate.PeopleService;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "users")
-public class People extends PeopleService {
+public class People {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int userId;
@@ -26,8 +26,6 @@ public class People extends PeopleService {
     @Column
     private String email;
     @Column
-    private boolean isActive;
-    @Column
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar regDate;
     @Transient
@@ -35,9 +33,18 @@ public class People extends PeopleService {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "taskAuthor")
     private List<Task> tasksAuthor = new ArrayList<Task>();
-
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "taskAppointer")
     private List<Task> tasksAppointer = new ArrayList<Task>();
+    //пользователь-админ (может все)
+    @Column
+    private boolean isAdmin;
+
+    //пользователь - поддержка (принимают задачи в работу)
+    @Column
+    private boolean isSupport;
+    //пользователь активен?
+    @Column
+    private boolean isActive;
 
     public People() {
     }
@@ -46,15 +53,17 @@ public class People extends PeopleService {
         this.login = login;
         this.isActive = true;
         regDate = Calendar.getInstance();
+        this.isAdmin = false;
+        this.isSupport = false;
     }
 
     public static People createUser(String login) {
         People user = new People();
         user.login = login;
         user.isActive = true;
-
         return user;
     }
+
     public void disableUserActivity() {
         this.isActive = false;
     }
@@ -72,6 +81,7 @@ public class People extends PeopleService {
         }
 
     }
+
     public People getCurrentUser() {
         return currentUser;
     }
@@ -79,4 +89,25 @@ public class People extends PeopleService {
     public void setCurrentUser(People user) {
         this.currentUser = user;
     }
+
+    //сделать пользователя админом
+    public void makeUserAdmin() {
+        isAdmin = true;
+    }
+
+    // сделать пользователя саппортом
+    public void makeUserSupport() {
+        isSupport = true;
+    }
+
+    //TODO:здесь будет проверка прав пользователя
+    public boolean checkUserisAdmin() {
+        return isAdmin;
+    }
+
+    public boolean checkUserisSupport() {
+        return isSupport;
+    }
+
+
 }

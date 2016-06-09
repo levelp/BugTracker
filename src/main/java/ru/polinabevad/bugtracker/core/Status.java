@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class Status {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private int statusId;
 
     private StatusType statusType;
 

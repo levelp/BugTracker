@@ -1,11 +1,8 @@
 package ru.polinabevad.bugtracker.core;
 
-
 import ru.polinabevad.bugtracker.taskboard.TaskList;
 import ru.polinabevad.bugtracker.core.Status.*;
 import ru.polinabevad.bugtracker.taskmanagement.MessageList;
-
-
 import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -27,7 +24,8 @@ public class Task {
     @Column
     private String taskName;
 
-    @Column
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "statusId", insertable = true, updatable = false)
     private StatusType taskStatus;
 
     @Column
@@ -45,12 +43,12 @@ public class Task {
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar taskCloseDate = null;
 
-    @ManyToOne
-    @JoinColumn(name = "taskAuthorId", insertable = false, updatable = false)
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "taskAuthorId", insertable = true, updatable = false)
     private People taskAuthor;
 
-    @ManyToOne
-    @JoinColumn(name = "taskAppointerId", insertable = false, updatable = false)
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "taskAppointerId", insertable = true, updatable = false)
     private People taskAppointer;
 
     @Transient
@@ -59,11 +57,13 @@ public class Task {
     public Task() {
     }
 
-    public Task(String taskName) {
+    public Task(String taskName, People taskAuthor, People taskAppointer) {
         taskCreateDate = Calendar.getInstance();
         taskUpdateDate = taskCreateDate;
         this.taskName = taskName;
         this.taskStatus = StatusType.OPEN;
+        this.taskAuthor = taskAuthor;
+        this.taskAppointer = taskAppointer;
     }
 
     public void createTask(String taskName) {

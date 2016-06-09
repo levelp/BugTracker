@@ -17,17 +17,20 @@ public class HibernateTaskTest extends Assert {
         session.close();
     }
 
+    // Создаем задачи и проверяем как заносятся в базу. Стандартным конструктором заполняются поля:
+    //Taskname, taskId, taskCreateDate
     @Test
     public void test2() {
         TaskService service = new TaskService();
-        Task task1 = new Task("Первая задача");
-        Task task2 = new Task("Первая задача");
-        Task task3 = new Task("Первая задача");
-        //TODO: реализовать еще PeopleService и т.п.
-        // People userAuthor = new People("TestAuthor");
-        //People userAppointer = new People("TestAppointer");
-        //task1.setTaskAuthor(userAuthor);
-        //task1.setTaskAppointer(userAppointer);
+        PeopleService service1 = new PeopleService();
+
+        People user1 = new People("TestUser1");
+        People user2 = new People("TestUser2");
+
+        Task task1 = new Task("Первая задача", user1, user2);
+        Task task2 = new Task("Вторая задача", user1, user2);
+        Task task3 = new Task("Третья задача", user2, user1);
+
         System.out.println("Добавляем задачи в базу");
 
         service.persist(task1);
@@ -37,9 +40,4 @@ public class HibernateTaskTest extends Assert {
 
     }
 
-    @Test
-    public void test3() {
-
-
-    }
 }

@@ -11,7 +11,6 @@ public class MessageDao<T> extends DAO<Message, Integer> {
         return (Message) getCurrentSession().get(Message.class, id);
     }
 
-
     @SuppressWarnings("unchecked")
     public ArrayList<Message> findAll() {
         return (ArrayList<Message>) getCurrentSession().createQuery("FROM Message").list();
