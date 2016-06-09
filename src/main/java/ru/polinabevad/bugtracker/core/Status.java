@@ -1,10 +1,23 @@
-package ru.polinabevad.bugtracker.taskmanagement;
+package ru.polinabevad.bugtracker.core;
 
-import ru.polinabevad.bugtracker.taskmanagement.Task.*;
+import javax.persistence.*;
+
 /**
  * Статус задачи, может использоваться сообщением для изменения
  */
+@Entity
+@Table(name = "status")
 public class Status {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
+    private StatusType statusType;
+
+    @Enumerated(EnumType.STRING)
+    public StatusType getStatusType() {
+        return this.statusType;
+    }
 
     public enum StatusType {
         //Перечисляем варианты состояний задачи и их названия
@@ -29,15 +42,14 @@ public class Status {
         }
 
         public boolean equals(StatusType statusTypeTo) {
-            if (this.statusName == statusTypeTo.statusName)
+            if (this.statusName.equals(statusTypeTo.statusName))
                 return true;
             if (getClass() != statusTypeTo.getClass())
-                return false;
-            if (statusTypeTo == null)
                 return false;
             return false;
         }
 
     }
+
 }
 

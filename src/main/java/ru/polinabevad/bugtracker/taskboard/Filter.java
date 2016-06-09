@@ -1,27 +1,78 @@
 package ru.polinabevad.bugtracker.taskboard;
 
 
-import ru.polinabevad.bugtracker.profile.*;
-import ru.polinabevad.bugtracker.services.DateService;
-import ru.polinabevad.bugtracker.taskmanagement.*;
+import ru.polinabevad.bugtracker.core.Status;
+import ru.polinabevad.bugtracker.core.Task;
+import ru.polinabevad.bugtracker.core.People;
 
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.Calendar;
 /**
  * Фильтр списка задач. Может быть нужно будет убрать и заменить представлением.
  */
-public class Filter {
-    private DateService tasksCreateDateFrom;
-    private DateService tasksCloseDateFrom;
-    private DateService tasksUpdateDateFrom;
-    private DateService tasksCreateDateTo;
-    private DateService tasksCloseDateTo;
-    private DateService tasksUpdateDateTo;
-    private Status taskStatus;
-    private User userAuthor;
-    private User userAppointer;
+public class Filter extends ArrayList<Task> {
 
-    //TODO: реализовать фильтрацию по автору, исполнителю, датам, статусу
-    public void filterTasks(Status taskStatus) {
+    public TaskList<Task> getTasksByAuthor(People taskAuthor) {
+        TaskList<Task> taskSearch = new TaskList<>();
+        for (Task task : TaskList.tasks) {
+            if (task.getTaskAuthor() == taskAuthor)
+                taskSearch.add(task);
+        }
+        return taskSearch;
+    }
 
+    public TaskList<Task> getTasksByAppointer(People taskAppointer) {
+        TaskList<Task> taskSearch = new TaskList<>();
+        for (Task task : TaskList.tasks) {
+            if (task.getTaskAppointer() == taskAppointer)
+                taskSearch.add(task);
+        }
+        return taskSearch;
+    }
+
+    public TaskList<Task> getTasksByStatus(Status.StatusType taskStatus) {
+        TaskList<Task> taskSearch = new TaskList<>();
+        for (Task task : TaskList.tasks) {
+            if (task.getTaskStatus() == taskStatus)
+                taskSearch.add(task);
+        }
+        return taskSearch;
+    }
+
+    public TaskList<Task> getTasksByName(String taskName) {
+        TaskList<Task> taskSearch = new TaskList<>();
+        for (Task task : TaskList.tasks) {
+            if (task.getTaskNameLowerCase().contains(taskName.toLowerCase()))
+                taskSearch.add(task);
+        }
+        return taskSearch;
+    }
+
+    public TaskList<Task> getTasksByCreateDate(Calendar from, Calendar to) {
+        TaskList<Task> taskSearch = new TaskList<>();
+        for (Task task : TaskList.tasks) {
+            if ((task.getTaskCreateDate().after(from)) && (task.getTaskCreateDate().before(to)))
+                taskSearch.add(task);
+        }
+        return taskSearch;
+    }
+
+    public TaskList<Task> getTasksByUpdateDate(Calendar from, Calendar to) {
+        TaskList<Task> taskSearch = new TaskList<>();
+        for (Task task : TaskList.tasks) {
+            if ((task.getTaskUpdateDate().after(from)) && (task.getTaskUpdateDate().before(to)))
+                taskSearch.add(task);
+        }
+        return taskSearch;
+    }
+
+    public TaskList<Task> getTasksByCloseDate(Calendar from, Calendar to) {
+        TaskList<Task> taskSearch = new TaskList<>();
+        for (Task task : TaskList.tasks) {
+            if ((task.getTaskCloseDate().after(from)) && (task.getTaskCloseDate().before(to)))
+                taskSearch.add(task);
+        }
+        return taskSearch;
     }
 }
+

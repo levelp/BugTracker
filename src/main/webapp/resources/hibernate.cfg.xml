@@ -11,5 +11,9 @@
         <property name="show_sql">true</property>
         <!-- Сохранять результаты выполнения запросов -->
         <property name="connection.autocommit">true</property>
+        <mapping class="ru.polinabevad.bugtracker.core.Task"/>
+        <mapping class="ru.polinabevad.bugtracker.core.People"/>
+        <mapping class="ru.polinabevad.bugtracker.core.Message"/>
+        <mapping class="ru.polinabevad.bugtracker.core.Status"/>
     </session-factory>
 </hibernate-configuration>

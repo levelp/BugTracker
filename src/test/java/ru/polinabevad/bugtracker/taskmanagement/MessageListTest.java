@@ -2,6 +2,7 @@ package ru.polinabevad.bugtracker.taskmanagement;
 
 import org.junit.Assert;
 import org.junit.Test;
+import ru.polinabevad.bugtracker.core.Task;
 
 import static java.lang.Thread.sleep;
 
@@ -12,14 +13,14 @@ public class MessageListTest extends Assert{
     @Test
     public void test1() throws InterruptedException {
         Task task1 = new Task();
-        task1.createTask("Первая задача",1);
+        task1.createTask("Первая задача");
         Task task2 = new Task();
-        task2.createTask("Вторая задача",2);
+        task2.createTask("Вторая задача");
 
         task1.createMessage("Тест1");
         task1.createMessage("Тест2");
         //вывести дату апдейта 1-ой задачи после добавления первых сообщений
-        System.out.println(task1.getTaskUpdateDate());
+        System.out.println(task1.getTaskUpdateDate().getTime());
 
         //задержка для проверки update date
         sleep(2000);
@@ -34,9 +35,9 @@ public class MessageListTest extends Assert{
         // Во вторую одно сообщение
         assertEquals("[Текст: Тест1]", task2.getTaskMessages().toString());
         //вывести дату апдейта 1-ой задачи после добавления последнего сообщения
-        System.out.println(task1.getTaskUpdateDate());
+        System.out.println(task1.getTaskUpdateDate().getTime());
         //вывести дату апдейта 2-ой задачи после добавления сообщений
-        System.out.println(task2.getTaskUpdateDate());
+        System.out.println(task2.getTaskUpdateDate().getTime());
 
     }
 

@@ -1,7 +1,6 @@
 package ru.polinabevad.bugtracker.taskboard;
 
-import ru.polinabevad.bugtracker.profile.User;
-import ru.polinabevad.bugtracker.taskmanagement.Task;
+import ru.polinabevad.bugtracker.core.Task;
 
 import java.util.ArrayList;
 
@@ -11,74 +10,45 @@ import java.util.ArrayList;
 public class TaskList<T> extends ArrayList<T> {
 
     public static TaskList<Task> tasks = new TaskList<>(100);
-    private static Integer lastTaskNumber = 0;
 
-    TaskList() {
+    public TaskList() {
     }
 
     private TaskList(int leng) {
         this.ensureCapacity(leng);
     }
 
-    public static Integer getLastTaskNumber() {
-        return lastTaskNumber;
-    }
-
-    private Integer increaseLastTaskNumber() {
-        lastTaskNumber = ++lastTaskNumber;
-        return lastTaskNumber;
-    }
-
     public void createTask(String taskName) {
-        //при добавлении увеличиваем номер задачи на 1
-        increaseLastTaskNumber();
         //создаем объект для новой задачи
         Task task = new Task();
         //заполняем поля задачи, пока имя и номер, даты создания и обновления - автоматически
-        task.createTask(taskName, lastTaskNumber);
+        task.createTask(taskName);
         //добавляем в список задач
         tasks.add(task);
 
     }
-
     // без удаленных (помеченных на isDeleted)
     public void printTasksList() {
         if (tasks != null) {
             for (Task task : tasks) {
-                if (!task.getDeletedStatus()) {
-                    System.out.println(task.toString());
-                }
+                System.out.println(task.toString());
             }
         }
     }
 
-    public Task getTaskByNumber(int taskNumber) {
+    public Task getTaskById(int taskId) {
         for (Task task : tasks) {
-            if (task.getTaskNumber() == taskNumber)
+            if (task.getTaskId() == taskId)
                 return task;
         }
         return null;
     }
 
-    public Task getTaskByName(String taskName) {
-        for (Task task : tasks) {
-            if (task.getTaskName().contains(taskName))
-                return task;
-        }
-        return null;
-    }
 
     public int getIndex(Task task) {
         return tasks.indexOf(task);
     }
 
-    public Task getTaskByAuthor(User taskAuthor) {
-        for (Task task : tasks) {
-            if (task.getTaskAuthor() == taskAuthor)
-                return task;
-        }
-        return null;
-    }
 }
 
 

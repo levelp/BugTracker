@@ -17,7 +17,7 @@ import java.util.stream.StreamSupport;
 
 public class HibernateMain {
 
-    private static SessionFactory sessionFactory = buildSessionFactory("core");
+    private static SessionFactory sessionFactory = buildSessionFactory("ru.polinabevad.bugtracker.core");
 
     private static SessionFactory buildSessionFactory(final String... packagesToScan) {
         try {

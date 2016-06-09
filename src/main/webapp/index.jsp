@@ -1,5 +1,5 @@
 <%@ page import="ru.polinabevad.bugtracker.taskboard.TaskList" %>
-<%@ page import="ru.polinabevad.bugtracker.taskmanagement.Task" %>
+<%@ page import="ru.polinabevad.bugtracker.core.Task" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -46,12 +46,11 @@
                 for (int i = 0; i < TaskList.tasks.size(); i++) {
                     if (TaskList.tasks.get(i).getClass() == Task.class) {
                         Task task = TaskList.tasks.get(i);
-                        if (!task.getDeletedStatus()) { %>
+            %>
             <%-- Ругается на print. Что за бред?--%>
             <% out.print("Задача " + task.toString()); %> <br>
             <%
                         }
-                    }
                 }
             %>
 

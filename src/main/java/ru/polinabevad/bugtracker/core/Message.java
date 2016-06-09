@@ -1,38 +1,57 @@
-package ru.polinabevad.bugtracker.taskmanagement;
+package ru.polinabevad.bugtracker.core;
 
-import ru.polinabevad.bugtracker.profile.*;
-import ru.polinabevad.bugtracker.services.DateService;
-import ru.polinabevad.bugtracker.taskboard.*;
-import ru.polinabevad.bugtracker.taskmanagement.Status.*;
+import ru.polinabevad.bugtracker.core.Status.*;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import javax.persistence.*;
+import java.util.Calendar;
 
 
 /**
  * Сообщение к задаче. Может поменять статус системы, поставить нового\изменить Автора\Исполнителя
- * TODO: предусмотреть запрос подтверждения удаления сообщения, ограничение - роль админа
  */
+@Entity
+@Table(name = "message")
 public class Message {
-    private DateService messageDate;
-    private User messageAuthor;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @Column
     private int messageId;
+    @OneToOne
+    @JoinColumn(name = "statusId")
     private Status messageStatus;
-    private User messageAppointer;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private People messageAppointer;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private People messageAuthor;
+
+    @Column
+    @Temporal(TemporalType.TIMESTAMP)
+    private Calendar messageDate;
+    @Column
     private String messageText;
-    private Object messageAttach;
+    @OneToOne
+    @JoinColumn(name = "taskId")
+    private Task taskId;
+    @Transient
     private Task task;
 
+    public Message() {
+    }
 
     public Message(Task task) {
         this.task = task;
     }
+
     public void createMessage(String messageText) {
         //считываем текущую дату
-        messageDate = new DateService();
+        messageDate = Calendar.getInstance();
 
         //устанавливаем дату апдейта задачи датой сообщения
-        task.changeUpdateDate(messageDate);
+        task.setUpdateDate(messageDate);
         //добавляем текст сообщения
         this.messageText = messageText;
     }
@@ -40,6 +59,7 @@ public class Message {
     public String toString() {
         return "Текст: " + messageText;
     }
+
     public void deleteMessage() {
     }
 
@@ -63,7 +83,7 @@ public class Message {
         //разрешаем перевод из проверки в закрыт и обновляем дату закрытия задачи
         if ((statusTypeFrom == StatusType.CHECK) && (statusTypeTo == StatusType.CLOSE)) {
             task.setTaskStatus(statusTypeTo);
-            task.changeCloseDate(messageDate);
+            task.setCloseDate(messageDate);
             return task.getTaskStatus();
         }
         task.setTaskStatus(statusTypeFrom);

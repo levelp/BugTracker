@@ -3,7 +3,7 @@ package ru.polinabevad.bugtracker.profile;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
-import ru.polinabevad.bugtracker.profile.User;
+import ru.polinabevad.bugtracker.core.People;
 
 public class AddUserTest extends Assert {
     /**
@@ -12,7 +12,7 @@ public class AddUserTest extends Assert {
      */
     @Test
     public void testAddUser() {
-        User user = User.createUser("sampleLogin");
+        People user = People.createUser("sampleLogin");
         assertEquals("sampleLogin", user.getLogin());
     }
 
