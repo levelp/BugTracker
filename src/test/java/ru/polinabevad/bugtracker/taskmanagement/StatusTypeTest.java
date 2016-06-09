@@ -2,6 +2,7 @@ package ru.polinabevad.bugtracker.taskmanagement;
 
 import org.junit.Assert;
 import org.junit.Test;
+import ru.polinabevad.bugtracker.core.StatusType;
 import ru.polinabevad.bugtracker.core.Task.*;
 
 /**

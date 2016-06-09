@@ -1,7 +1,7 @@
 package ru.polinabevad.bugtracker.taskboard;
 
 
-
+import ru.polinabevad.bugtracker.core.StatusType;
 import ru.polinabevad.bugtracker.core.Task;
 import ru.polinabevad.bugtracker.core.People;
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ class Filter extends ArrayList<Task> {
         return taskSearch;
     }
 
-    TaskList<Task> getTasksByStatus(Task.StatusType taskStatus) {
+    TaskList<Task> getTasksByStatus(StatusType taskStatus) {
         TaskList<Task> taskSearch = new TaskList<>();
         for (Task task : TaskList.tasks) {
             if (task.getTaskStatus() == taskStatus)

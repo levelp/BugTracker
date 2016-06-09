@@ -5,6 +5,7 @@ import org.hibernate.SessionFactory;
 import org.junit.Assert;
 import org.junit.Test;
 import ru.polinabevad.bugtracker.core.People;
+import ru.polinabevad.bugtracker.core.StatusType;
 import ru.polinabevad.bugtracker.core.Task;
 
 import javax.persistence.EnumType;
@@ -35,9 +36,9 @@ public class HibernateTaskTest extends Assert {
         Task task3 = new Task("Третья задача", user2, user1);
         Task task4 = new Task("Четвертая задача", user2, user1);
 
-        task2.setTaskStatus(Task.StatusType.WORK);
-        task3.setTaskStatus(Task.StatusType.CLOSE);
-        task4.setTaskStatus(Task.StatusType.CHECK);
+        task2.setTaskStatus(StatusType.WORK);
+        task3.setTaskStatus(StatusType.CLOSE);
+        task4.setTaskStatus(StatusType.CHECK);
         //task1.createMessage("Текст сообщения");
 
         System.out.println("Добавляем задачи в базу");

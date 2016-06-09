@@ -64,14 +64,6 @@ public class Task {
         this.taskStatus = StatusType.OPEN;
     }
 
-    public void setCreateDate(Calendar date) {
-        taskCreateDate = date;
-    }
-
-    void setUpdateDate(Calendar date) {
-        taskUpdateDate = date;
-    }
-
     void setCloseDate(Calendar date) {
         taskCloseDate = date;
     }
@@ -84,6 +76,10 @@ public class Task {
         return this.taskUpdateDate;
     }
 
+    void setTaskUpdateDate(Calendar date) {
+        taskUpdateDate = date;
+    }
+
     public Calendar getTaskCloseDate() {
         if (taskCloseDate != null) return this.taskCloseDate;
         return null;
@@ -91,6 +87,10 @@ public class Task {
 
     public Calendar getTaskCreateDate() {
         return this.taskCreateDate;
+    }
+
+    public void setTaskCreateDate(Calendar date) {
+        taskCreateDate = date;
     }
 
     public String getTaskName() {
@@ -109,8 +109,8 @@ public class Task {
         return this.taskAuthor;
     }
 
-    public void setTaskAuthor(People user) {
-        this.taskAuthor = user;
+    public void setTaskAuthor(People taskAuthor) {
+        this.taskAuthor = taskAuthor;
     }
 
     public People getTaskAppointer() {
@@ -157,37 +157,5 @@ public class Task {
         //TODO: заменить на Exception
         return "У юзера нет прав на удаление";
     }
-
-    public enum StatusType {
-        //Перечисляем варианты состояний задачи и их названия
-        OPEN("Открыт"),
-        WORK("В работе"),
-        CHECK("В проверке"),
-        CLOSE("Закрыт");
-
-        private final String statusName;
-
-        StatusType(String statusName) {
-            this.statusName = statusName;
-        }
-
-        public String getStatusName() {
-            return statusName;
-        }
-
-        @Override
-        public String toString() {
-            return "Статус задачи: " + statusName;
-        }
-
-        public boolean equals(StatusType statusTypeTo) {
-            if (this.statusName.equals(statusTypeTo.statusName))
-                return true;
-            if (getClass() != statusTypeTo.getClass())
-                return false;
-            return false;
-        }
-    }
-
 
 }

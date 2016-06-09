@@ -17,7 +17,7 @@ public class Message {
     @Id
     private int messageId;
     @Transient
-    private Task.StatusType messageStatus;
+    private StatusType messageStatus;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "messageAppointerId", insertable = true, updatable = false)
@@ -50,7 +50,7 @@ public class Message {
         messageDate = Calendar.getInstance();
 
         //устанавливаем дату апдейта задачи датой сообщения
-        task.setUpdateDate(messageDate);
+        task.setTaskUpdateDate(messageDate);
         //добавляем текст сообщения
         this.messageText = messageText;
     }

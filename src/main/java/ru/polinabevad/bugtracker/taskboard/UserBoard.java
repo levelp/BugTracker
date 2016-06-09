@@ -1,6 +1,7 @@
 package ru.polinabevad.bugtracker.taskboard;
 
 
+import ru.polinabevad.bugtracker.core.StatusType;
 import ru.polinabevad.bugtracker.core.Task;
 import ru.polinabevad.bugtracker.core.People;
 
@@ -10,9 +11,6 @@ import java.util.ArrayList;
  * Список незакрытых задач пользователя, аля рабочая доска
  */
 class UserBoard<T> extends ArrayList<T> {
-
-    private boolean isAuthor;
-    private Task.StatusType isNotClose;
 
     TaskList<Task> getUserBoard(People currentUser) {
         TaskList<Task> userBoard = new TaskList<>();

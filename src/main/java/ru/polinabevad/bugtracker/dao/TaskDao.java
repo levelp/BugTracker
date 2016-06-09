@@ -7,6 +7,7 @@ import java.util.Collection;
 
 // DAO - Data Access Object
 public class TaskDao<T> extends DAO<Task, Integer> {
+
     public Task findById(Integer id) {
         return getCurrentSession().get(Task.class, id);
     }
