@@ -32,10 +32,17 @@ public class People {
     private People currentUser;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "taskAuthor")
-    private List<Task> tasksAuthor = new ArrayList<Task>();
+    private List<Task> tasksAuthor = new ArrayList<>();
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "taskAppointer")
-    private List<Task> tasksAppointer = new ArrayList<Task>();
+    private List<Task> tasksAppointer = new ArrayList<>();
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "messageAuthor")
+    private List<Message> messagesAuthor = new ArrayList<>();
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "messageAppointer")
+    private List<Message> messagesAppointer = new ArrayList<>();
+
     //пользователь-админ (может все)
+
     @Column
     private boolean isAdmin;
 
@@ -91,21 +98,21 @@ public class People {
     }
 
     //сделать пользователя админом
-    public void makeUserAdmin() {
+    private void makeUserAdmin() {
         isAdmin = true;
     }
 
     // сделать пользователя саппортом
-    public void makeUserSupport() {
+    private void makeUserSupport() {
         isSupport = true;
     }
 
     //TODO:здесь будет проверка прав пользователя
-    public boolean checkUserisAdmin() {
+    boolean checkUserisAdmin() {
         return isAdmin;
     }
 
-    public boolean checkUserisSupport() {
+    boolean checkUserisSupport() {
         return isSupport;
     }
 

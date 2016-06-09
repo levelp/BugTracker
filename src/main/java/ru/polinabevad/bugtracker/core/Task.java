@@ -1,7 +1,6 @@
 package ru.polinabevad.bugtracker.core;
 
 import ru.polinabevad.bugtracker.taskboard.TaskList;
-import ru.polinabevad.bugtracker.core.Status.*;
 import ru.polinabevad.bugtracker.taskmanagement.MessageList;
 import javax.persistence.*;
 import javax.persistence.Entity;
@@ -24,33 +23,25 @@ public class Task {
     @Column
     private String taskName;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "statusId", insertable = true, updatable = false)
+    @Enumerated(EnumType.ORDINAL)
     private StatusType taskStatus;
-
     @Column
     private String taskDescription;
-
     @Column
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar taskCreateDate;
-
     @Column
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar taskUpdateDate;
-
     @Column
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar taskCloseDate = null;
-
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "taskAuthorId", insertable = true, updatable = false)
     private People taskAuthor;
-
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "taskAppointerId", insertable = true, updatable = false)
     private People taskAppointer;
-
     @Transient
     private MessageList<Message> taskMessages;
 
@@ -77,11 +68,11 @@ public class Task {
         taskCreateDate = date;
     }
 
-    public void setUpdateDate(Calendar date) {
+    void setUpdateDate(Calendar date) {
         taskUpdateDate = date;
     }
 
-    public void setCloseDate(Calendar date) {
+    void setCloseDate(Calendar date) {
         taskCloseDate = date;
     }
 
@@ -142,7 +133,6 @@ public class Task {
         this.taskStatus = statusType;
     }
 
-
     public void createMessage(String messageText) {
         if (taskMessages == null) {
             taskMessages = new MessageList(this);
@@ -166,6 +156,37 @@ public class Task {
         }
         //TODO: заменить на Exception
         return "У юзера нет прав на удаление";
+    }
+
+    public enum StatusType {
+        //Перечисляем варианты состояний задачи и их названия
+        OPEN("Открыт"),
+        WORK("В работе"),
+        CHECK("В проверке"),
+        CLOSE("Закрыт");
+
+        private final String statusName;
+
+        StatusType(String statusName) {
+            this.statusName = statusName;
+        }
+
+        public String getStatusName() {
+            return statusName;
+        }
+
+        @Override
+        public String toString() {
+            return "Статус задачи: " + statusName;
+        }
+
+        public boolean equals(StatusType statusTypeTo) {
+            if (this.statusName.equals(statusTypeTo.statusName))
+                return true;
+            if (getClass() != statusTypeTo.getClass())
+                return false;
+            return false;
+        }
     }
 
 

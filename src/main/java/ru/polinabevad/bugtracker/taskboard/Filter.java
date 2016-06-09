@@ -1,18 +1,17 @@
 package ru.polinabevad.bugtracker.taskboard;
 
 
-import ru.polinabevad.bugtracker.core.Status;
+
 import ru.polinabevad.bugtracker.core.Task;
 import ru.polinabevad.bugtracker.core.People;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 /**
  * Фильтр списка задач. Может быть нужно будет убрать и заменить представлением.
  */
-public class Filter extends ArrayList<Task> {
+class Filter extends ArrayList<Task> {
 
-    public TaskList<Task> getTasksByAuthor(People taskAuthor) {
+    TaskList<Task> getTasksByAuthor(People taskAuthor) {
         TaskList<Task> taskSearch = new TaskList<>();
         for (Task task : TaskList.tasks) {
             if (task.getTaskAuthor() == taskAuthor)
@@ -21,7 +20,7 @@ public class Filter extends ArrayList<Task> {
         return taskSearch;
     }
 
-    public TaskList<Task> getTasksByAppointer(People taskAppointer) {
+    TaskList<Task> getTasksByAppointer(People taskAppointer) {
         TaskList<Task> taskSearch = new TaskList<>();
         for (Task task : TaskList.tasks) {
             if (task.getTaskAppointer() == taskAppointer)
@@ -30,7 +29,7 @@ public class Filter extends ArrayList<Task> {
         return taskSearch;
     }
 
-    public TaskList<Task> getTasksByStatus(Status.StatusType taskStatus) {
+    TaskList<Task> getTasksByStatus(Task.StatusType taskStatus) {
         TaskList<Task> taskSearch = new TaskList<>();
         for (Task task : TaskList.tasks) {
             if (task.getTaskStatus() == taskStatus)
@@ -39,7 +38,7 @@ public class Filter extends ArrayList<Task> {
         return taskSearch;
     }
 
-    public TaskList<Task> getTasksByName(String taskName) {
+    TaskList<Task> getTasksByName(String taskName) {
         TaskList<Task> taskSearch = new TaskList<>();
         for (Task task : TaskList.tasks) {
             if (task.getTaskNameLowerCase().contains(taskName.toLowerCase()))
@@ -48,7 +47,7 @@ public class Filter extends ArrayList<Task> {
         return taskSearch;
     }
 
-    public TaskList<Task> getTasksByCreateDate(Calendar from, Calendar to) {
+    TaskList<Task> getTasksByCreateDate(Calendar from, Calendar to) {
         TaskList<Task> taskSearch = new TaskList<>();
         for (Task task : TaskList.tasks) {
             if ((task.getTaskCreateDate().after(from)) && (task.getTaskCreateDate().before(to)))

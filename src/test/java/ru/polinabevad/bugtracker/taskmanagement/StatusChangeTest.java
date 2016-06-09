@@ -4,7 +4,8 @@ import org.junit.Assert;
 import org.junit.Test;
 import ru.polinabevad.bugtracker.core.Message;
 import ru.polinabevad.bugtracker.core.Task;
-import ru.polinabevad.bugtracker.core.Status.*;
+import ru.polinabevad.bugtracker.core.Task.*;
+
 
 /**
  *

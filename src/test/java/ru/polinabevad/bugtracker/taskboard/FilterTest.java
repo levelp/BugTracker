@@ -3,7 +3,7 @@ package ru.polinabevad.bugtracker.taskboard;
 import org.junit.Assert;
 import org.junit.Test;
 import ru.polinabevad.bugtracker.core.People;
-import ru.polinabevad.bugtracker.core.Status;
+
 import ru.polinabevad.bugtracker.core.Task;
 
 import java.util.Calendar;
@@ -23,17 +23,17 @@ public class FilterTest extends Assert {
 
         Task task1 = TaskList.tasks.get(0);
         task1.setTaskAuthor(userAuthor);
-        task1.setTaskStatus(Status.StatusType.CLOSE);
+        task1.setTaskStatus(Task.StatusType.CLOSE);
         task1.setTaskAppointer(userAppointer);
 
 
         Task task2 = TaskList.tasks.get(1);
         task2.setTaskAppointer(userAppointer);
-        task2.setTaskStatus(Status.StatusType.WORK);
+        task2.setTaskStatus(Task.StatusType.WORK);
 
         Task task3 = TaskList.tasks.get(2);
         task3.setTaskAuthor(userAuthor);
-        task3.setTaskStatus(Status.StatusType.WORK);
+        task3.setTaskStatus(Task.StatusType.WORK);
 
         Task task4 = TaskList.tasks.get(3);
         Calendar task4createDate = Calendar.getInstance();
@@ -50,11 +50,11 @@ public class FilterTest extends Assert {
 
         System.out.println("Поиск задач по статусу открыт:");
         Filter taskfindbyStatus = new Filter();
-        taskfindbyStatus.getTasksByStatus(Status.StatusType.OPEN).forEach(System.out::println);
+        taskfindbyStatus.getTasksByStatus(Task.StatusType.OPEN).forEach(System.out::println);
         System.out.println("Поиск задач по статусу закрыт:");
-        taskfindbyStatus.getTasksByStatus(Status.StatusType.CLOSE).forEach(System.out::println);
+        taskfindbyStatus.getTasksByStatus(Task.StatusType.CLOSE).forEach(System.out::println);
         System.out.println("Поиск задач по статусу в работе:");
-        taskfindbyStatus.getTasksByStatus(Status.StatusType.WORK).forEach(System.out::println);
+        taskfindbyStatus.getTasksByStatus(Task.StatusType.WORK).forEach(System.out::println);
 
         System.out.println("Поиск задач по названию, без учета регистра:");
         Filter taskfindbyName = new Filter();

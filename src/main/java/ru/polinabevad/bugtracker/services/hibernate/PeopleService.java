@@ -9,11 +9,10 @@ import java.util.ArrayList;
  * Тип пользователя: админский или нет, у админского будут права на удаление задач\сообщений
  */
 public class PeopleService {
-    //пользователь-админ (может все)
 
     private static PeopleDao peopleDao;
 
-    public PeopleService() {
+    PeopleService() {
         peopleDao = new PeopleDao();
     }
 

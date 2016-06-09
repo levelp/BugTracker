@@ -1,6 +1,6 @@
 package ru.polinabevad.bugtracker.core;
 
-import ru.polinabevad.bugtracker.core.Status.*;
+import ru.polinabevad.bugtracker.core.Task.*;
 
 import javax.persistence.*;
 import java.util.Calendar;
@@ -12,20 +12,19 @@ import java.util.Calendar;
 @Entity
 @Table(name = "message")
 public class Message {
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "messageId_seq")
+    @SequenceGenerator(name = "messageId_seq", sequenceName = "messageId_sequence", allocationSize = 1)
     @Id
-    @Column
     private int messageId;
-    @OneToOne
-    @JoinColumn(name = "statusId")
-    private Status messageStatus;
+    @Transient
+    private Task.StatusType messageStatus;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "messageAppointerId", insertable = true, updatable = false)
     private People messageAppointer;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "messageAuthorId", insertable = true, updatable = false)
     private People messageAuthor;
 
     @Column

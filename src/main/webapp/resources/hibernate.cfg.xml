@@ -14,6 +14,5 @@
         <mapping class="ru.polinabevad.bugtracker.core.Task"/>
         <mapping class="ru.polinabevad.bugtracker.core.People"/>
         <mapping class="ru.polinabevad.bugtracker.core.Message"/>
-        <mapping class="ru.polinabevad.bugtracker.core.Status"/>
     </session-factory>
 </hibernate-configuration>
