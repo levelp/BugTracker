@@ -43,8 +43,13 @@ public class HibernateTaskTest extends Assert {
         task3.setTaskStatus(StatusType.CLOSE);
         task4.setTaskStatus(StatusType.CHECK);
         sleep(2000);
-        Message message = new Message(task4, user2, "Тестовое сообщение");
+        Message message = new Message(task4, user2, "Тестовое сообщение1");
+        Message message2 = new Message(task2, user2, "Тестовое сообщение2");
+        Message message3 = new Message(task2, user2, "Тестовое сообщение3");
+        // Этот статус должен поменяться
         message.changeTaskStatus(StatusType.CLOSE);
+        // На это должно выдаться сообщение, что невозможно поменять статус задачи
+        message2.changeTaskStatus(StatusType.CLOSE);
 
         System.out.println("Добавляем задачи в базу");
 
@@ -53,10 +58,14 @@ public class HibernateTaskTest extends Assert {
         service.persist(task3);
         service.persist(task4);
         servicemess.persist(message);
+        servicemess.persist(message2);
+        servicemess.persist(message3);
 
         ArrayList<Task> tasks1 = service.findAll();
         ArrayList<People> people1 = service1.findAll();
-        ArrayList<Message> message1 = servicemess.findAll();
+        ArrayList<Message> messages1 = servicemess.findAll();
+        ArrayList<Message> messages2 = servicemess.findByTaskId(task2.getTaskId());
+        System.out.println(messages2);
     }
 
 }

@@ -92,6 +92,8 @@ public class Message {
             return task.getTaskStatus();
         }
         task.setTaskStatus(statusTypeFrom);
+        System.out.println("Невозможно перевести задачу в статус " + statusTypeTo.getStatusName() +
+                ", т.к. она находится в статусе " + statusTypeFrom.getStatusName());
         return task.getTaskStatus();
 
     }
