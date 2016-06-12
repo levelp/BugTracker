@@ -4,6 +4,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.junit.Assert;
 import org.junit.Test;
+import ru.polinabevad.bugtracker.core.Message;
 import ru.polinabevad.bugtracker.core.People;
 import ru.polinabevad.bugtracker.core.StatusType;
 import ru.polinabevad.bugtracker.core.Task;
@@ -11,6 +12,8 @@ import ru.polinabevad.bugtracker.core.Task;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import java.util.ArrayList;
+
+import static java.lang.Thread.sleep;
 
 public class HibernateTaskTest extends Assert {
     @Test
@@ -23,9 +26,9 @@ public class HibernateTaskTest extends Assert {
     // Создаем задачи и проверяем как заносятся в базу. Стандартным конструктором заполняются поля:
     //Taskname, taskId, taskCreateDate
     @Test
-    public void test2() {
+    public void test2() throws InterruptedException {
         TaskService service = new TaskService();
-        //MessageService servicemess = new MessageService();
+        MessageService servicemess = new MessageService();
         PeopleService service1 = new PeopleService();
 
         People user1 = new People("TestUser1");
@@ -39,7 +42,9 @@ public class HibernateTaskTest extends Assert {
         task2.setTaskStatus(StatusType.WORK);
         task3.setTaskStatus(StatusType.CLOSE);
         task4.setTaskStatus(StatusType.CHECK);
-        //task1.createMessage("Текст сообщения");
+        sleep(2000);
+        Message message = new Message(task4, user2, "Тестовое сообщение");
+        message.changeTaskStatus(StatusType.CLOSE);
 
         System.out.println("Добавляем задачи в базу");
 
@@ -47,9 +52,11 @@ public class HibernateTaskTest extends Assert {
         service.persist(task2);
         service.persist(task3);
         service.persist(task4);
+        servicemess.persist(message);
 
         ArrayList<Task> tasks1 = service.findAll();
         ArrayList<People> people1 = service1.findAll();
+        ArrayList<Message> message1 = servicemess.findAll();
     }
 
 }

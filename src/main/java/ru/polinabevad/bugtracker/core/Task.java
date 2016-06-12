@@ -2,10 +2,12 @@ package ru.polinabevad.bugtracker.core;
 
 import ru.polinabevad.bugtracker.taskboard.TaskList;
 import ru.polinabevad.bugtracker.taskmanagement.MessageList;
+
 import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.util.Calendar;
+import java.util.List;
 
 /**
  * Задача. В ней могут содержаться сообщения, есть статус, даты создания, обновления и закрытия. Обновление - любое изменение
@@ -25,6 +27,7 @@ public class Task {
 
     @Enumerated(EnumType.ORDINAL)
     private StatusType taskStatus;
+
     @Column
     private String taskDescription;
     @Column
@@ -36,18 +39,29 @@ public class Task {
     @Column
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar taskCloseDate = null;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "taskAuthorId", insertable = true, updatable = false)
     private People taskAuthor;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "taskAppointerId", insertable = true, updatable = false)
     private People taskAppointer;
+
     @Transient
-    private MessageList<Message> taskMessages;
+    private List<Message> taskMessages;
 
     public Task() {
+
     }
 
+    public Task(String taskName) {
+        taskCreateDate = Calendar.getInstance();
+        taskUpdateDate = taskCreateDate;
+        this.taskName = taskName;
+        this.taskStatus = StatusType.OPEN;
+
+    }
     public Task(String taskName, People taskAuthor, People taskAppointer) {
         taskCreateDate = Calendar.getInstance();
         taskUpdateDate = taskCreateDate;
@@ -55,13 +69,6 @@ public class Task {
         this.taskStatus = StatusType.OPEN;
         this.taskAuthor = taskAuthor;
         this.taskAppointer = taskAppointer;
-    }
-
-    public void createTask(String taskName) {
-        taskCreateDate = Calendar.getInstance();
-        taskUpdateDate = taskCreateDate;
-        this.taskName = taskName;
-        this.taskStatus = StatusType.OPEN;
     }
 
     void setCloseDate(Calendar date) {
@@ -121,7 +128,7 @@ public class Task {
         this.taskAppointer = taskAppointer;
     }
 
-    public MessageList<Message> getTaskMessages() {
+    public List<Message> getTaskMessages() {
         return taskMessages;
     }
 
@@ -131,15 +138,6 @@ public class Task {
 
     public void setTaskStatus(StatusType statusType) {
         this.taskStatus = statusType;
-    }
-
-    public void createMessage(String messageText) {
-        if (taskMessages == null) {
-            taskMessages = new MessageList(this);
-        }
-        Message message = new Message(this);
-        message.createMessage(messageText);
-        taskMessages.add(message);
     }
 
     public String toString() {

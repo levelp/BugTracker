@@ -20,9 +20,8 @@ public class TaskList<T> extends ArrayList<T> {
 
     public void createTask(String taskName) {
         //создаем объект для новой задачи
-        Task task = new Task();
+        Task task = new Task(taskName);
         //заполняем поля задачи, пока имя и номер, даты создания и обновления - автоматически
-        task.createTask(taskName);
         //добавляем в список задач
         tasks.add(task);
 

@@ -16,7 +16,8 @@ public class Message {
     @SequenceGenerator(name = "messageId_seq", sequenceName = "messageId_sequence", allocationSize = 1)
     @Id
     private int messageId;
-    @Transient
+
+    @Column
     private StatusType messageStatus;
 
     @ManyToOne(cascade = CascadeType.ALL)
@@ -32,10 +33,9 @@ public class Message {
     private Calendar messageDate;
     @Column
     private String messageText;
+
     @OneToOne
     @JoinColumn(name = "taskId")
-    private Task taskId;
-    @Transient
     private Task task;
 
     public Message() {
@@ -45,14 +45,16 @@ public class Message {
         this.task = task;
     }
 
-    public void createMessage(String messageText) {
-        //считываем текущую дату
+    public Message(Task task, People messageAppointer, String messageText) {
+        this.messageAuthor = task.getTaskAuthor();
+        this.messageAppointer = messageAppointer;
         messageDate = Calendar.getInstance();
-
+        this.task = task;
         //устанавливаем дату апдейта задачи датой сообщения
         task.setTaskUpdateDate(messageDate);
         //добавляем текст сообщения
         this.messageText = messageText;
+        this.messageStatus = task.getTaskStatus();
     }
 
     public String toString() {
@@ -67,27 +69,40 @@ public class Message {
         //разрешаем перевод из открыт в работу
         if ((statusTypeFrom == StatusType.OPEN) && (statusTypeTo == StatusType.WORK)) {
             task.setTaskStatus(statusTypeTo);
+            this.setMessageStatus(statusTypeTo);
             return task.getTaskStatus();
         }
         //разрешаем перевод из работы в проверку
         if ((statusTypeFrom == StatusType.WORK) && (statusTypeTo == StatusType.CHECK)) {
             task.setTaskStatus(statusTypeTo);
+            this.setMessageStatus(statusTypeTo);
             return task.getTaskStatus();
         }
         //разрешаем перевод из проверки в работу
         if ((statusTypeFrom == StatusType.CHECK) && (statusTypeTo == StatusType.WORK)) {
             task.setTaskStatus(statusTypeTo);
+            this.setMessageStatus(statusTypeTo);
             return task.getTaskStatus();
         }
         //разрешаем перевод из проверки в закрыт и обновляем дату закрытия задачи
         if ((statusTypeFrom == StatusType.CHECK) && (statusTypeTo == StatusType.CLOSE)) {
             task.setTaskStatus(statusTypeTo);
+            this.setMessageStatus(statusTypeTo);
             task.setCloseDate(messageDate);
             return task.getTaskStatus();
         }
         task.setTaskStatus(statusTypeFrom);
         return task.getTaskStatus();
 
+    }
+
+
+    public StatusType getMessageStatus() {
+        return messageStatus;
+    }
+
+    public void setMessageStatus(StatusType status) {
+        this.messageStatus = status;
     }
 
 }
