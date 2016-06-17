@@ -1,11 +1,15 @@
 package ru.polinabevad.bugtracker.dao;
 
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.polinabevad.bugtracker.core.People;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
 // DAO - Data Access Object
+@Service("PeopleDao")
+@Transactional
 public class PeopleDao<T> extends DAO<People, Integer> {
     public People findById(Integer id) {
         return (People) getCurrentSession().get(People.class, id);
@@ -28,7 +32,7 @@ public class PeopleDao<T> extends DAO<People, Integer> {
                 .executeUpdate();
     }
 
-    public void deleteById(Integer id) {
+    private void deleteById(Integer id) {
         getCurrentSession().createQuery("DELETE FROM People  " +
                 "WHERE id = :id")
                 .setParameter("id", id)

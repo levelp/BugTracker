@@ -6,6 +6,8 @@
     <session-factory>
         <property name="connection.url">jdbc:postgresql://localhost:5432/BugTrackerBase</property>
         <property name="connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.username">postgres</property>
+        <property name="hibernate.connection.password">AhuleB2KS</property>
         <!-- DB schema will be updated if needed -->
         <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">true</property>

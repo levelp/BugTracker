@@ -1,11 +1,16 @@
 package ru.polinabevad.bugtracker.dao;
 
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.polinabevad.bugtracker.core.Message;
+import ru.polinabevad.bugtracker.core.Task;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
 // DAO - Data Access Object
+@Service("MessageDao")
+@Transactional
 public class MessageDao<T> extends DAO<Message, Integer> {
     public Message findById(Integer id) {
         return (Message) getCurrentSession().get(Message.class, id);
@@ -18,7 +23,7 @@ public class MessageDao<T> extends DAO<Message, Integer> {
 
     public ArrayList<Message> findByTaskId(Integer taskId) {
         return (ArrayList<Message>) getCurrentSession().createQuery("FROM Message " +
-                " WHERE taskId=" + taskId)
+                " WHERE task=" + taskId)
                 .list();
     }
 
@@ -34,7 +39,7 @@ public class MessageDao<T> extends DAO<Message, Integer> {
                 .executeUpdate();
     }
 
-    public void deleteById(Integer id) {
+    private void deleteById(Integer id) {
         getCurrentSession().createQuery("DELETE FROM Message  " +
                 "WHERE id = :id")
                 .setParameter("id", id)

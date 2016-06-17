@@ -32,6 +32,12 @@ public class HibernateMain {
 
             System.out.println("hibernate.connection.username = " + configuration.getProperties().getProperty("hibernate.connection.username"));
             System.out.println("hibernate.connection.password = " + configuration.getProperties().getProperty("hibernate.connection.password"));
+            System.out.println("hibernate.c3p0.min_size = " + configuration.getProperties().getProperty("hibernate.c3p0.min_size"));
+            System.out.println("hibernate.c3p0.max_size = " + configuration.getProperties().getProperty("hibernate.c3p0.max_size"));
+            System.out.println("hibernate.hbm2ddl.auto = " + configuration.getProperties().getProperty("hibernate.hbm2ddl.auto"));
+            System.out.println("hibernate.c3p0.timeout = " + configuration.getProperties().getProperty("hibernate.c3p0.timeout"));
+            System.out.println("hibernate.c3p0.max_statements = " + configuration.getProperties().getProperty("hibernate.c3p0.max_statements"));
+
             return configuration.buildSessionFactory(
                     new StandardServiceRegistryBuilder()
                             .applySettings(configuration.getProperties())

@@ -6,8 +6,8 @@
 <head>
     <title>Стартовая страница Баг-трекера</title>
     <!-- Пока css стили тут, нужно вынести отдельно-->
-    <link rel="stylesheet" href="./resources/clearcss.css">
-    <link rel="stylesheet" href="./resources/index.css">
+    <link rel="stylesheet" href="resources/clearcss.css">
+    <link rel="stylesheet" href="resources/index.css">
 
 </head>
 <body>
