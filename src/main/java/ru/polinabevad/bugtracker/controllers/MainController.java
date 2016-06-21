@@ -1,4 +1,4 @@
-package ru.polinabevad.bugtracker.services;
+package ru.polinabevad.bugtracker.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

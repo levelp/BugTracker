@@ -1,7 +1,5 @@
 package ru.polinabevad.bugtracker.core;
 
-import ru.polinabevad.bugtracker.services.hibernate.PeopleService;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Calendar;

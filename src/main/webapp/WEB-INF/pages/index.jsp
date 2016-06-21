@@ -1,13 +1,16 @@
 <%@ page import="ru.polinabevad.bugtracker.taskboard.TaskList" %>
 <%@ page import="ru.polinabevad.bugtracker.core.Task" %>
 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Стартовая страница Баг-трекера</title>
-    <!-- Пока css стили тут, нужно вынести отдельно-->
-    <link rel="stylesheet" href="resources/clearcss.css">
-    <link rel="stylesheet" href="resources/index.css">
+
+    <link href="<c:url value="/resources/clearcss.css" />"  rel="stylesheet" >
+    <link href="<c:url value="/resources/index.css"/>"  rel="stylesheet" >
+
 
 </head>
 <body>

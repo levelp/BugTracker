@@ -4,13 +4,15 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.junit.Assert;
 import org.junit.Test;
+import ru.polinabevad.bugtracker.config.HibernateMain;
 import ru.polinabevad.bugtracker.core.Message;
 import ru.polinabevad.bugtracker.core.People;
 import ru.polinabevad.bugtracker.core.StatusType;
 import ru.polinabevad.bugtracker.core.Task;
+import ru.polinabevad.bugtracker.services.MessageService;
+import ru.polinabevad.bugtracker.services.PeopleService;
+import ru.polinabevad.bugtracker.services.TaskService;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import java.util.ArrayList;
 
 import static java.lang.Thread.sleep;

@@ -1,4 +1,4 @@
-package ru.polinabevad.bugtracker.services.hibernate;
+package ru.polinabevad.bugtracker.services;
 
 import ru.polinabevad.bugtracker.core.People;
 import ru.polinabevad.bugtracker.dao.PeopleDao;
@@ -12,7 +12,7 @@ public class PeopleService {
 
     private static PeopleDao peopleDao;
 
-    PeopleService() {
+    public PeopleService() {
         peopleDao = new PeopleDao();
     }
 

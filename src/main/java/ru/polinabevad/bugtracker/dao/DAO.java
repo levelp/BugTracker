@@ -4,10 +4,9 @@ package ru.polinabevad.bugtracker.dao;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-import ru.polinabevad.bugtracker.services.hibernate.HibernateMain;
+import ru.polinabevad.bugtracker.config.HibernateMain;
 
 import java.io.Serializable;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 

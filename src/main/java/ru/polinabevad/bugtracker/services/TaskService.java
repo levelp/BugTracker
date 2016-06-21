@@ -1,4 +1,4 @@
-package ru.polinabevad.bugtracker.services.hibernate;
+package ru.polinabevad.bugtracker.services;
 
 import ru.polinabevad.bugtracker.dao.TaskDao;
 import ru.polinabevad.bugtracker.core.Task;
