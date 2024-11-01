@@ -11,7 +11,7 @@
     <name>BugTracker</name>
     <properties>
         <spring.version>4.2.5.RELEASE</spring.version>
-        <spring.security.version>RELEASE</spring.security.version>
+        <spring.security.version>5.7.13</spring.security.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <dependencies>
