@@ -10,7 +10,7 @@
     <packaging>war</packaging>
     <name>BugTracker</name>
     <properties>
-        <spring.version>6.2.1</spring.version>
+        <spring.version>6.2.2</spring.version>
         <spring.security.version>RELEASE</spring.security.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
